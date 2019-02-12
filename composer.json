@@ -1,14 +1,19 @@
 {
-    "require": {
-        "php": ">=5.4",
-	    "twbs/bootstrap": "4.2.1",
-	    "twig/twig": "1.37.1",
-	    "fortawesome/font-awesome": "5.7.1"
-    },
-	"minimum-stability": "dev",
-    "extra": {
-        "installer-paths": {
-            "vendor": ["vendor/package"]
-        }
+  "require": {
+    "php": ">=5.4",
+    "inphasesolutionsprojects/core-v1.00": "dev-master",
+    "twbs/bootstrap": "4.2.1",
+    "twig/twig": "1.37.1",
+    "fortawesome/font-awesome": "5.7.1"
+  },
+  "minimum-stability": "dev",
+  "extra": {
+    "installer-paths": {
+      "vendor": [ "vendor/package" ],
+      "core": [ "core" ]
     }
+  },
+  "repositories":[
+    { "type": "git", "url": "https://bitbucket.org/inphasesolutionsprojects/core-v1.00.git" }
+  ]
 }
