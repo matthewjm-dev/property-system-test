@@ -8,7 +8,6 @@ class dashboard_widget extends ipsCore_helper
         'file_widget',
         'user_widget',
         'page_widget',
-        'blog_widget',
         'contact_widget',
     ];
 

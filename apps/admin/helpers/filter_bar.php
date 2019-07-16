@@ -96,7 +96,7 @@ class filter_bar extends ipsCore_helper
 
         $form->add_select('filter_order', 'Order', ['value' => $this->get_filter_orderby() . ' ' . $this->get_filter_order(), 'options' => $this->get_order_options(), 'required' => false, 'placeholder' => 'Choose Sort Order']);
         $form->add_select('filter_perpage', 'Show Per Page', ['value' => $this->get_filter_perpage(), 'options' => $this->get_perpage_options(), 'required' => false, 'placeholder' => 'Choose Per Page']);
-        $form->add_text('filter_search', 'Search', ['value' => $this->get_filter_search(), 'required' => false, 'placeholder' => 'Choose Per Page']);
+        $form->add_text('filter_search', 'Search', ['value' => $this->get_filter_search(), 'required' => false, 'placeholder' => 'Enter search term']);
         $form->add_hidden('current_page', ['value' => $this->get_current_page(), 'required' => false]);
 
         return $form->render();

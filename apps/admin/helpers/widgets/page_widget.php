@@ -17,16 +17,18 @@ class page_widget extends dashboard_widget
         $count_unlive = 0;
         $count_locked = 0;
 
-        foreach ($pages as $page) {
-            if ($page->live) {
-                $count_live++;
-            } else {
-                $count_unlive++;
-            }
+		if (!empty($pages)) {
+			foreach ($pages as $page) {
+				if ($page->live) {
+					$count_live++;
+				} else {
+					$count_unlive++;
+				}
 
-            if ($page->locked) {
-                $count_locked++;
-            }
+				if ($page->locked) {
+					$count_locked++;
+				}
+			}
         }
 
         $this->add_widget_data([

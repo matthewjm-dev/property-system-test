@@ -609,7 +609,7 @@ class modules_controller extends admin_controller
                     if ($this->field->remove()) { // remove field item
                         $json_data = ['redirect' => '/admin/modules/module/' . $this->field->mid . '/'];
                         $this->add_flash('Field has been successfully removed!');
-                        $this->log('Deleted Field', 'Deleted Field item - field_mfid: ' . $field_mfid . ' ( ' . $this->field->get_name() . ' ) mid: ' . $this->field->mid);
+                        $this->log('Deleted Field', 'Deleted Field item - field_mfid: ' . $field_mfid . ' ( ' . $this->field->title . ' ) mid: ' . $this->field->mid);
                     } else {
                         $this->log('Failed to remove field', 'Failed to remove item - field_mfid: ' . $field_mfid . ' mid: ' . $this->field->mid);
                         $errors[] = 'Failed to remove Field item.';

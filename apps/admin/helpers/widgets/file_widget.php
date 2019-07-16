@@ -15,11 +15,13 @@ class file_widget extends dashboard_widget
         $count_files = 0;
         $count_images = 0;
 
-        foreach ($files as $file) {
-            if ($file->type == 'image') {
-                $count_images++;
-            } else {
-                $count_files++;
+        if (!empty($files)) {
+            foreach ($files as $file) {
+                if ($file->type == 'image') {
+                    $count_images++;
+                } else {
+                    $count_files++;
+                }
             }
         }
 

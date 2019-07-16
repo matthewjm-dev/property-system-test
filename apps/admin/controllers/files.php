@@ -63,12 +63,12 @@ class files_controller extends admin_controller
         $form->add_text('title', 'Title', ['value' => $this->file->title, 'required' => true, 'placeholder' => 'Enter Title']);
         $form->add_text('alt', 'Alt', ['value' => $this->file->alt, 'placeholder' => 'Enter Alt Text']);
         if ($type == 'image') {
-            $form->add_image('file', ($this->file->path ? 'Replacement ' : '') . 'Image Upload', ['value' => $this->file->path, 'required' => true, 'placeholder' => 'Choose Image', 'preview' => $this->file->path]);
+            $form->add_image('file', ($this->file->path ? 'Replacement ' : '') . 'Image Upload', ['value' => $this->file->path, 'placeholder' => 'Choose Image', 'preview' => $this->file->path]);
             if ($this->file->path) {
                 $form->add_html('image-preview', '<fieldset class="image-preview"><p>Current Image Preview:</p><a href="' . $this->file->path . '" target="_blank"><img src="' . $this->file->path . '" /></a></fieldset>');
             }
         } else {
-            $form->add_file('file', ($this->file->path ? 'Replacement ' : '') . 'File Upload', ['value' => $this->file->path, 'required' => true, 'placeholder' => 'Choose File', 'preview' => $this->file->path]);
+            $form->add_file('file', ($this->file->path ? 'Replacement ' : '') . 'File Upload', ['value' => $this->file->path, 'placeholder' => 'Choose File', 'preview' => $this->file->path]);
             if ($this->file->path) {
                 $form->add_html('file-preview', '<fieldset class="file-preview"><p>Current Uploaded File:</p><a href="' . $this->file->path . '" target="_blank"></a></fieldset>');
             }
@@ -194,52 +194,70 @@ class files_controller extends admin_controller
             $form->validate_form($errors);
 
             if (empty($errors)) {
-                if ($return = ipsCore_file_manager::do_upload_file('file', $type)) {
-                    if (!isset($return['errors'])) {
-                        $this->file->modified = time();
-                        if (!$file_id) {
-                            $this->file->created = $this->file->modified;
-                        }
-                        $this->file->type = $type;
-                        $this->file->user = $this->currentuser->uid;
+                $return = [];
+                $reload = false;
+                if (!$file_id || ($file_id && !empty($form->get_field_value('file')))) {
+                    $return = ipsCore_file_manager::do_upload_file('file', $type);
+                    $reload = true;
+                }
+                if (!isset($return['errors'])) {
+                    $this->file->modified = time();
+                    if (!$file_id) {
+                        $this->file->created = $this->file->modified;
+                    }
+                    $this->file->type = $type;
+                    $this->file->user = $this->currentuser->uid;
+                    $this->file->title = $form->get_field_value('title');
+                    $this->file->alt = $form->get_field_value('alt');
+
+                    if (isset($return['basename'])) {
                         $this->file->basename = $return['basename'];
+                    }
+                    if (isset($return['extension'])) {
                         $this->file->extension = $return['extension'];
+                    }
+                    if (isset($return['name'])) {
                         $this->file->filename = $return['name'];
+                    }
+                    if (isset($return['uploadto'])) {
                         $this->file->path = '/' . $return['uploadto'];
-                        $this->file->title = $form->get_field_value('title');
-                        $this->file->alt = $form->get_field_value('alt');
+                    }
+                    if (isset($return['size'])) {
+                        $this->file->size = $return['size'];
+                    }
+                    if (isset($return['img_width'])) {
+                        $this->file->img_width = $return['img_width'];
+                    }
+                    if (isset($return['img_height'])) {
+                        $this->file->img_height = $return['img_height'];
+                    }
 
-                        if (isset($return['size'])) {
-                            $this->file->size = $return['size'];
-                        }
-                        if (isset($return['img_width'])) {
-                            $this->file->img_width = $return['img_width'];
-                        }
-                        if (isset($return['img_height'])) {
-                            $this->file->img_height = $return['img_height'];
-                        }
-
-                        if ($this->file->save()) {
-                            if ($file_id) {
+                    if ($this->file->save()) {
+                        if ($file_id) {
+                            if (!$reload) {
                                 $this->log('Modified ' . $text, 'File ID: ' . $this->file->afid);
                                 $json_data = ['success' => $text . ' has been successfully modified!'];
                             } else {
-                                $this->log('Created ' . $text, 'Field ID: ' . $this->file->afid);
+                                $this->log('Modified ' . $text, 'File ID: ' . $this->file->afid);
                                 $json_data = ['redirect' => '/admin/files/file/' . $this->file->afid];
-                                $this->add_flash($text . ' Created Successfully!');
+                                $this->add_flash($text . ' has been successfully modified!');
                             }
                         } else {
-                            if ($file_id) {
-                                $this->log('File Process Failed', $text . ' to Save Field.');
-                                $errors[] = 'Failed to Save ' . $text . '.';
-                            } else {
-                                $this->log('File Process Failed', 'Failed to Create ' . $text . '.');
-                                $errors[] = 'Failed to Create ' . $text . '.';
-                            }
+                            $this->log('Created ' . $text, 'Field ID: ' . $this->file->afid);
+                            $json_data = ['redirect' => '/admin/files/file/' . $this->file->afid];
+                            $this->add_flash($text . ' Created Successfully!');
                         }
                     } else {
-                        $errors = array_merge($errors, $return['errors']);
+                        if ($file_id) {
+                            $this->log('File Process Failed', $text . ' to Save Field.');
+                            $errors[] = 'Failed to Save ' . $text . '.';
+                        } else {
+                            $this->log('File Process Failed', 'Failed to Create ' . $text . '.');
+                            $errors[] = 'Failed to Create ' . $text . '.';
+                        }
                     }
+                } else {
+                    $errors = array_merge($errors, $return['errors']);
                 }
             }
         }

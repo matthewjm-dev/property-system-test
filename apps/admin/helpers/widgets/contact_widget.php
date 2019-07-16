@@ -17,16 +17,18 @@ class contact_widget extends dashboard_widget
         $count_unlive = 0;
         $count_locked = 0;
 
-        foreach ($contacts as $contact) {
-            if ($contact->live) {
-                $count_live++;
-            } else {
-                $count_unlive++;
-            }
+		if (!empty($contacts)) {
+			foreach ($contacts as $contact) {
+				if ($contact->live) {
+					$count_live++;
+				} else {
+					$count_unlive++;
+				}
 
-            if ($contact->locked) {
-                $count_locked++;
-            }
+				if ($contact->locked) {
+					$count_locked++;
+				}
+			}
         }
 
         $this->add_widget_data([
