@@ -4,3 +4,7 @@ environment.ini
 !/core/startup.php
 /public/uploads
 /public/img
+/public/lib
+/public/css
+/public/fonts
+/public/js
