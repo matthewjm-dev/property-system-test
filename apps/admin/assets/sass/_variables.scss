@@ -1,0 +1,32 @@
+// Colour Definitions
+$white: #fff;
+$colour-bg: $white; // body
+$colour-bg-alt: $white;
+$colour-main: #24F4FF; // layout colours etc
+$colour-main-alt: $white;
+$colour-main-dark: #003764;
+$colour-text: $white; // layout text colours
+$colour-text-alt: #000;
+$colour-body: #333; // body text colours
+$colour-body-alt: #666;
+
+// Colour Variables
+$sub-title-colour: $colour-main-dark;
+$href-colour: $colour-main;
+$p-colour: $colour-body-alt;
+
+// Fonts
+$font-primary: "Times New Roman", Times, serif;
+$font-primary-default-size: 22px;
+$font-primary-default-weight: 700;
+$font-primary-default-colour: $colour-body;
+$font-primary-default-spacing: 0.5px;
+
+$font-secondary: "Times New Roman", Times, serif;
+$font-secondary-default-size: 16px;
+$font-secondary-default-weight: 400;
+$font-secondary-default-colour: $colour-text;
+$font-secondary-default-spacing: 0px;
+
+// Paddings
+$section-padding: 40px;

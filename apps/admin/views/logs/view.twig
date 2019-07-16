@@ -1,0 +1,17 @@
+<div id="main" class="page-logs_view">
+    {{ breadcrumbs|raw }}
+    {{ flash_message|raw }}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ title }}</h1>
+                    <p><span>User:</span> {{ user }}</p>
+                    <p><span>Time:</span> {{ created }}</p>
+                    <p><span>Content:</span><br />{{ content }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

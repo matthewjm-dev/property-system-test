@@ -1,0 +1,37 @@
+<div id="main" class="page-dev_info">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-md-3">
+                    {% if navigations is defined and navigations is not empty %}
+                        <ul id="config-groups" class="side-menu">
+                            {% for navigation in navigations %}
+                                <li {% if navigation.current %}class="current"{% endif %}>
+                                    <a href="{{ page_url ~ navigation.href }}">{% if navigation.icon %}<i class="{{ navigation.icon }}"></i>{% endif %}{{ navigation.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="col-sm-8 col-md-9">
+                    <h1>{{ title }}</h1>
+                    {% if contents is defined and contents is not empty %}
+                        {% for content_section in contents %}
+                            <div class="help-section">
+                                {% if content_section.title %}<h2>{{ content_section.title }}</h2>{% endif %}
+                                {% if content_section.content is iterable %}
+                                    {% for content_section_content in content_section.content %}
+                                        <p>{{ content_section_content|raw }}</p>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>{{ content_section.content|raw }}</p>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

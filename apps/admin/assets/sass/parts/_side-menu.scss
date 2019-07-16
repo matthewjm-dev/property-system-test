@@ -1,0 +1,27 @@
+.side-menu {
+	margin: 25px 0 0;
+	padding: 0;
+	li {
+		list-style-type: none;
+		background-color: #333;
+		border: 1px solid #333;
+		margin-bottom: 2px;
+		a {
+			color: #fff;
+			display: block;
+			padding: 5px 0 5px 25px;
+			position: relative;
+			i {
+				position: absolute;
+				top: 5px;
+				left: 5px;
+			}
+		}
+		&.current {
+			background-color: #fff;
+			a {
+				color: #333;
+			}
+		}
+	}
+}

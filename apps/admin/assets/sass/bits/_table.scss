@@ -1,0 +1,168 @@
+table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	border-right: 1px solid #333;
+
+	tr {
+
+		th, td {
+			border-top: 1px solid #333;
+			border-bottom: 1px solid #333;
+			border-left: 1px solid #333;
+			padding: 5px 10px;
+
+			&.control {
+				width: 60px;
+			}
+
+			&.control-button {
+				width: 170px;
+				@include md-down() {
+					width: 70px;
+				}
+			}
+		}
+
+		th {
+			background-color: #333;
+			color: #fff;
+		}
+
+		td {
+			position: relative;
+			background-color: #fff;
+
+			.button {
+				max-width: 160px;
+
+				i {
+					margin: 0;
+				}
+
+				span {
+					margin-left: 5px;
+				}
+
+				&.manage {
+					span {
+						display: inline;
+						@include md-down() {
+							display: none;
+						}
+					}
+				}
+			}
+
+			.sort-handle {
+				display: block;
+				text-align: center;
+				cursor: pointer;
+				color: #333;
+				font-size: 28px;
+
+				&:hover {
+					color: $href-colour;
+				}
+			}
+
+			img {
+				display: block;
+				margin: 0 auto;
+				max-width: 60px;
+				max-height: 60px;
+			}
+		}
+
+		&::nth-child(even) {
+			background-color: #F9F9F9;
+		}
+
+		.toggle_form {
+			display: block;
+			text-align: center;
+
+			.loader, .loader.active {
+				.loader-icon, .loader-icon:after, .loader-icon {
+					width: 30px;
+					height: 30px;
+					border-width: 5px;
+				}
+			}
+
+			fieldset {
+				padding: 0;
+				margin: 0;
+			}
+
+			button {
+				width: 100%;
+				background: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			i {
+				display: none;
+				font-size: 20px;
+				margin: 0;
+
+				&.live, &.unlocked {
+					color: #009600;
+				}
+
+				&.unlive, &.locked {
+					color: #ec0000;
+				}
+			}
+		}
+
+		&.live {
+			.toggle_live_form .live {
+				display: block;
+			}
+		}
+
+		&.unlive {
+			td {
+				background-color: #9c9c9c;
+			}
+
+			.toggle_live_form .unlive {
+				display: block;
+			}
+		}
+
+		&.removed td {
+			background-color: #ffb1b1;
+		}
+
+		&.locked {
+			.toggle_live_form .live {
+				color: #f5a000;
+			}
+
+			.toggle_lock_form .locked {
+				display: block;
+			}
+		}
+
+		&.unlocked {
+			.toggle_lock_form .unlocked {
+				display: block;
+			}
+		}
+
+		&.ui-sortable-helper {
+			display: table;
+
+			td {
+				background-color: #f3f3f3;
+
+				.sort-handle {
+					color: $href-colour;
+				}
+			}
+		}
+	}
+}

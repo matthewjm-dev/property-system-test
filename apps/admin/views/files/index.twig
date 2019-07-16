@@ -1,0 +1,47 @@
+<div id="main" class="page-files_index">
+    {{ breadcrumbs|raw }}
+    {{ flash_message|raw }}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="module-head">
+                        <h1>{{ title }}</h1>
+                        <a href="{{ create_file_href }}" class="button"><i class="fas fa-plus-square"></i>{{ create_file_text|raw }}</a>
+                        <a href="{{ create_image_href }}" class="button"><i class="fas fa-plus-square"></i>{{ create_image_text|raw }}</a>
+                    </div>
+                    <p>{{ content|raw }}</p>
+                    <div id="module-list">
+                        {% if files is defined and files is not empty %}
+                            <table>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Preview</th>
+                                    <th>Type</th>
+                                    <th class="control-button"></th>
+                                </tr>
+                                {% for file in files %}
+                                    <tr>
+                                        <td>{{ file.afid }}</td>
+                                        <td>{{ file.title }}</td>
+                                        {% if file.type == 'image' %}
+                                            <td><a href="{{ file.path }}" target="_blank"><img src="{{ file.path }}" alt="Open Image"/></a></td>
+                                        {% else %}
+                                            <td><a href="{{ file.path }}" target="_blank">Open File</a></td>
+                                        {% endif %}
+                                        <td>{{ file.type }}</td>
+                                        <td class="control-button"><a href="{{ manage_file_href ~ file.afid }}" class="button manage" title="{{ manage_file_text }}"><i class="fas fa-edit"></i><span>{{ manage_file_text }}</span></a></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        {% else %}
+                            <p id="module-list-empty">No Files to display</p>
+                        {% endif %}
+                    </div>
+                    {{ pagination|raw }}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

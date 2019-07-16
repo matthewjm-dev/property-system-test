@@ -1,0 +1,7 @@
+{% if message is defined %}
+    <p>{{ message }}</p>
+{% else %}
+    <p>Are you sure?</p>
+{% endif %}
+{{ confirm_form|raw }}
+<button class="button popup-close">Cancel</button>

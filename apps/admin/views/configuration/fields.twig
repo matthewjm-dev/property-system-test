@@ -1,0 +1,29 @@
+<div id="main" class="page-config_fields">
+    {{ breadcrumbs|raw }}
+    {{ flash_message|raw }}
+    <section>
+        <div class="container">
+            <div class="column-d-12">
+                <h1>{{ title }}</h1>
+                <p>{{ content|raw }}</p>
+                <div id="type-list" class="item-list">
+                    <div class="head">
+                        <a href="{{ create_field_href }}" class="button"><i class="fas fa-plus-square"></i>Create Field</a>
+                    </div>
+                    {% if fields is defined and fields is not empty %}
+                        <ul>
+                            {% for field in fields %}
+                                <li>
+                                    <a href="{{ manage_href }}">{{ field.title }}</a>
+                                    <a href="{{ manage_field_href ~ field.id }}" class="button manage"><i class="far fa-edit"></i><span>Manage</span></a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No Fields to display</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

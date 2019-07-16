@@ -1,0 +1,34 @@
+#main.page-portfolio {
+	#portfolio-list {
+		padding: 40px 0 10px;
+		background-color: $colour-body;
+
+		.portfolio-preview {
+			width:100%;
+			padding-bottom: 80%;
+			position: relative;
+			margin-bottom: 30px;
+			background-color: $white;
+			border: 2px solid $colour-main;
+
+			.portfolio-preview-inner {
+				@include ips-fill_parent();
+
+				.portfolio-preview-content {
+					padding: 10px 0;
+					background-color: rgba($colour-body, 0.8);
+					position: absolute;
+					right: 0;
+					left: 0;
+					@include ips-horizontal_center();
+
+					.portfolio-preview-content-title {
+						text-align: center;
+						color: $white;
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,33 @@
+#dashboard-widgets {
+	margin-top: 20px;
+
+	.widget {
+		margin-bottom: 30px;
+		.widget-inner {
+			display: block;
+			min-height: 190px;
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px 10px;
+			p {
+				color: #fff;
+				margin: 0 0 10px;
+				&:last-child {
+					margin: 0;
+				}
+			}
+			.widget-title {
+				font-size: 24px;
+				font-weight: 600;
+				margin-bottom: 15px;
+				i {
+					margin-right: 10px;
+				}
+			}
+			&:hover {
+				background-color: #555;
+			}
+		}
+	}
+}

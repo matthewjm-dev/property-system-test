@@ -1,0 +1,16 @@
+<nav>
+    <div class="container">
+        {% if nav_items is defined %}
+            <ul id="nav-items">
+                {% for nav_item in nav_items %}
+                    <li>
+                        <a href="{{ nav_item.href }}">{% if nav_item.icon is defined %}<i class="{{ nav_item.icon }}"></i>{% endif %}{{ nav_item.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% if nav_modules is defined %}
+            {{ nav_modules|raw }}
+        {% endif %}
+    </div>
+</nav>

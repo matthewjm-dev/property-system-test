@@ -1,0 +1,42 @@
+<div id="main" class="page-logs_index">
+    {{ breadcrumbs|raw }}
+    {{ flash_message|raw }}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="module-head">
+                        <h1>{{ title }}</h1>
+                    </div>
+                    <p>{{ content|raw }}</p>
+                    <div id="module-list">
+                        {% if logs is defined and logs is not empty %}
+                            <table>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Time</th>
+                                    <th>User</th>
+                                    <th>Title</th>
+                                    <th class="control-button"></th>
+                                </tr>
+                                {% for log in logs %}
+                                    <tr>
+                                        <td>{{ log.alid }}</td>
+                                        <td>{{ log.created }}</td>
+                                        <td>{{ log.user }}</td>
+                                        <td>{{ log.title }}</td>
+                                        <td class="control-button"><a href="{{ view_log_href ~ log.alid }}" class="button manage" title="{{ view_log_text }}"><i class="fas fa-binoculars"></i><span>{{ view_log_text }}</span></a></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        {% else %}
+                            <p id="module-list-empty">No Logs to display</p>
+                        {% endif %}
+                    </div>
+                    {{ pagination|raw }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

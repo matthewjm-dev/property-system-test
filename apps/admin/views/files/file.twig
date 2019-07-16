@@ -1,0 +1,19 @@
+<div id="main" class="page-logs_view">
+    {{ breadcrumbs|raw }}
+    {{ flash_message|raw }}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ title }}</h1>
+                    <div id="page-head" class="head">
+                        {% if remove_form is defined %}
+                            {{ remove_form|raw }}
+                        {% endif %}
+                    </div>
+                    {{ form|raw }}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

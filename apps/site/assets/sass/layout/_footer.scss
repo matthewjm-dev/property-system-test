@@ -1,0 +1,44 @@
+footer {
+	width: 100%;
+	background-color: $colour-bg-alt;
+	padding-bottom: 20px;
+	border-top: 2px solid $colour-main;
+
+	#footer-contact-bar {
+		background-color: $colour-bg;
+		padding: 15px 0;
+		text-align: center;
+		margin-bottom: 20px;
+
+		p {
+			color: $white;
+			font-size: 20px;
+			margin: 0;
+
+			a {
+				font-size: 20px;
+				color: $colour-main;
+			}
+		}
+	}
+
+	#footer-links {
+		a {
+			margin-right: 15px;
+		}
+	}
+
+	#footer-links a, #footer-copyright {
+		font-size: 14px;
+		line-height: 1;
+		color: $colour-bg;
+		margin: 0;
+		font-weight: 600;
+	}
+
+	#footer-copyright {
+		text-align: right;
+	}
+
+	@include clearfix();
+}

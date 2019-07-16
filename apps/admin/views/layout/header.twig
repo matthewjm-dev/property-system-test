@@ -1,0 +1,36 @@
+<header>
+	<div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% if nav_items is defined %}
+                    {% for nav_item in nav_items %}
+                        <a class="head-mob-button" href="{{ nav_item.href }}">
+                            {% if nav_item.icon is defined %}
+                                <i class="{{ nav_item.icon }}"></i>
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                {% endif %}
+                <div id="header-menu-button" class="head-mob-button" data-target="#header header ul">
+                    <i class="fas fa-cogs open"></i>
+                    <i class="fas fa-times close"></i>
+                </div>
+                <div id="nav-menu-button" class="head-mob-button" data-target="#header nav #nav_modules">
+                    <i class="fas fa-bars open"></i>
+                    <i class="fas fa-times close"></i>
+                </div>
+                <div id="header-logo">
+                    <img src="{{ header_logo_src }}" title="{{ header_logo_title }}" />
+                    <p>{{ header_logo_cmsver }}</p>
+                </div>
+                <ul>
+                    {% for header_item in header_items %}
+                        <li {% if header_item.classes is defined %}class="{{ header_item.classes }}"{% endif %}>
+                            <a href="{{ header_item.href }}">{% if header_item.icon is defined %}<i class="{{ header_item.icon }}"></i>{% endif %}{{ header_item.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+	</div>
+</header>

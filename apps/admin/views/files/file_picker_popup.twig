@@ -1,0 +1,9 @@
+{% if message is defined %}
+    <p>{{ message }}</p>
+{% endif %}
+{{ selector_form|raw }}
+<div id="popup-buttons">
+    {{ upload_button|raw }}
+    {{ manage_button|raw }}
+    <button class="button popup-close">Cancel</button>
+</div>

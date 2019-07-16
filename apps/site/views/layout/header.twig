@@ -1,0 +1,28 @@
+<header>
+	<div class="container">
+		<div class="row">
+			<div class="col-5">
+				<a id="site-logo" href="/">
+					{{ header_image|raw }}
+				</a>
+			</div>
+			<div class="col-7">
+				<nav>
+					{% if header_links is defined and header_links is not empty %}
+						<ul>
+							{% for header_link in header_links %}
+								<li{% if header_link.current %} class="current"{% endif %}>
+									<a href="{{ header_link.href }}">{{ header_link.title }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</nav>
+				<div id="nav-menu-button" class="head-mob-button" data-target="#header nav ul">
+					<i class="fas fa-bars open"></i>
+					<i class="fas fa-times close"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

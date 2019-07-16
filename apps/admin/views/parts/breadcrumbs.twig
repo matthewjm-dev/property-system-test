@@ -1,0 +1,23 @@
+{% if breadcrumbs is defined %}
+	<section id="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul>
+                        <li><p>You are here:</p></li>
+                        {% for text, href in breadcrumbs %}
+                            <li>
+                                {% if href %}
+                                    <a href="{{ href }}">{{ text }}</a>
+                                    <i class="fas fa-angle-double-right"></i>
+                                {% else %}
+                                    <p>{{ text }}</p>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+		</div>
+	</section>
+{% endif %}

@@ -1,0 +1,29 @@
+form {
+	fieldset {
+		padding: 0;
+		border: 0;
+		margin-bottom: 10px;
+		position: relative;
+
+		label {
+
+		}
+
+		input {
+			padding: 5px;
+		}
+
+		&.error {
+		}
+
+		&.error input {
+			border-color: red;
+		}
+
+		&.error .message {
+			position: absolute;
+			bottom: 0;
+			color: red;
+		}
+	}
+}

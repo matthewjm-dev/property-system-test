@@ -1,5 +1,5 @@
 <?php
-ipsCore::requires_helper( 'remote_routes' );
+/*ipsCore::requires_core_helper( 'remote_routes' );
 $remote_routes = new ipsCore_remote_routes();
 
 // Database Routes
@@ -8,7 +8,7 @@ if ( !empty( $routes ) ) {
 	foreach ( $routes as $route ) {
 		$this->add_route( $route['uri'], new ipsCore_route( $route['controller'], $route['method'], $route['action'] ) );
 	}
-}
+}*/
 
 // Static Routes
-$this->add_route( '/', new ipsCore_route( 'pages', 'index' ) );
+$this->add_route( '/', 'pages', 'index' );

@@ -1,0 +1,107 @@
+<div id="main" class="page-dev_info">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ title }}</h1>
+                    <p>{{ content|raw }}</p>
+                    <h3>Navigation of sections:</h3>
+                    <p><a class="jump" href="#dev-info-apps">Section 1: Apps</a></p>
+                    <p><a class="jump" href="#dev-info-paths">Section 1: Paths</a></p>
+                    <p><a class="jump" href="#dev-info-datas">Section 1: Other Data</a></p>
+                    <p><a class="jump" href="#dev-info-phpinfo">Section 1: PHP Information</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="dev-info-apps" class="dev-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Apps</h2>
+                    <p>{{ apps_info }}</p>
+                    <table>
+                        <tr>
+                            <th>Title</th>
+                            <th>Directory</th>
+                            <th>URI</th>
+                            <th>Core Version</th>
+                            <th>Mailer</th>
+                        </tr>
+                        {% for app in apps %}
+                            <tr>
+                                <td>{{ app.title }}</td>
+                                <td>{{ app.directory }}</td>
+                                <td>{{ app.uri }}</td>
+                                <td>{{ app.core_version }}</td>
+                                <td>{{ app.mailer }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="dev-info-paths" class="dev-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Paths</h2>
+                    <p>{{ paths_info }}</p>
+                    <table>
+                        <tr>
+                            <th>Title</th>
+                            <th>Variable</th>
+                            <th>Value</th>
+                        </tr>
+                        {% for path in paths %}
+                            <tr>
+                                <td><span>{{ path.0 }}</span></td>
+                                <td>{{ path.1 }}</td>
+                                <td>{{ path.2 }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="dev-info-datas" class="dev-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Other Data</h2>
+                    <p>{{ datas_info }}</p>
+                    <table>
+                        <tr>
+                            <th>Title</th>
+                            <th>Variable</th>
+                            <th>Value</th>
+                        </tr>
+                        {% for data in datas %}
+                            <tr>
+                                <td>{{ data.0 }}</td>
+                                <td>{{ data.1 }}</td>
+                                <td>{{ data.2 }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="dev-info-php" class="dev-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>PHP Info</h2>
+                    <p>{{ phpinfo_info }}</p>
+                    <div id="phpinfo">
+                        {{ phpinfo|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

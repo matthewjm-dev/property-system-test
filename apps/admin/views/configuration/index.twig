@@ -1,0 +1,27 @@
+<div id="main" class="page-configuration_group">
+    {{ breadcrumbs|raw }}
+    {{ flash_message|raw }}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    {% if groups is defined and groups is not empty %}
+                        <ul id="config-groups" class="side-menu">
+                            {% for group in groups %}
+                                <li {% if group.current %}class="current"{% endif %}>
+                                    <a href="{{ group.href }}">{% if group.icon %}<i class="{{ group.icon }}"></i>{% endif %}{{ group.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="col-sm-9">
+                    {{ manage_link|raw }}
+                    <h1>{{ title }}</h1>
+                    <p>{{ content|raw }}</p>
+                    {{ form|raw }}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

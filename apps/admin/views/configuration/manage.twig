@@ -1,0 +1,34 @@
+<div id="main" class="page-configuration_manage">
+    {{ breadcrumbs|raw }}
+    {{ flash_message|raw }}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ title }}</h1>
+                    <div id="field-list">
+                        <div class="head">
+                            <a class="button" href="{{ create_group_link }}">Create Group</a>
+                        </div>
+                        <table>
+                            {% if groups is defined and groups is not empty %}
+                                <tr>
+                                    <th>Group Title</th>
+                                    <th></th>
+                                </tr>
+                                {% for group in groups %}
+                                    <tr>
+                                        <td>{{ group.title }}</td>
+                                        <td><a href="{{ group.manage_group_href }}" class="button manage"><i class="far fa-edit"></i><span>Manage Group</span></a></td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <p id="no-items">No Configuration Groups to show</p>
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

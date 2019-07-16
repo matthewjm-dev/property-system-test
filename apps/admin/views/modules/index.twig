@@ -1,0 +1,39 @@
+<div id="main" class="page-posts_index">
+    {{ breadcrumbs|raw }}
+    {{ flash_message|raw }}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="module-head">
+                        <h1>{{ title }}</h1>
+                        <a href="{{ create_module_href }}" class="button"><i class="fas fa-plus-square"></i><span>{{ create_module_text }}</span></a>
+                    </div>
+                    <p>{{ content|raw }}</p>
+                    <div id="module-list">
+                        {% if modules is defined and modules is not empty %}
+                            <table>
+                                <tr>
+                                    <th>Module</th>
+                                    <th>dbSlug</th>
+                                    <th>PKey</th>
+                                    <th class="control-button"></th>
+                                </tr>
+                                {% for module in modules %}
+                                    <tr>
+                                        <td>{{ module.title }}</td>
+                                        <td>{{ module.dbslug }}</td>
+                                        <td>{{ module.key }}</td>
+                                        <td class="control-button"><a href="{{ manage_module_href ~ module.mid }}" class="button manage" title="{{ manage_module_text }}"><i class="fas fa-edit"></i><span>{{ manage_module_text }}</span></a></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        {% else %}
+                            <p id="module-list-empty">No Modules to display</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
