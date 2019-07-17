@@ -55,16 +55,10 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: 'apps',
-                    src: ['**/assets/js/*.js'],
-                    dest: 'public/js/src/',
-                    ext: '.js'
-                },{
-                    expand: true,
-                    cwd: 'apps/lib',
-                    src: ['**/*.js'],
-                    dest: 'public/js/src/lib/',
-                    ext: '.js'
+                    cwd: 'public/js/src/',
+                    src: ['*.js'],
+                    dest: 'public/js/dist/',
+                    ext: '.min.js'
                 }]
             }
         },
@@ -120,7 +114,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-concat-css');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-uglify-es');
     grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-copy');
