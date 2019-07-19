@@ -7,15 +7,17 @@ class submission_form extends ipsCore_helper
 {
     protected $form_name;
     protected $form_module;
+    protected $form_action;
     protected $module_fields;
 
-    public $send_to;
-    public $success_message = 'Your submission has been made successfully';
+    protected $send_to;
+    protected $success_message = 'Your submission has been made successfully';
 
     // Construct
-    public function __construct($form_module)
+    public function __construct($form_module, $form_action = false)
     {
         $this->form_name = $form_module;
+        $this->form_action = ($form_action ?: '/contact/process/');
 
         if ($this->set_form_module()) {
             $this->set_module_fields();
@@ -40,6 +42,14 @@ class submission_form extends ipsCore_helper
         $this->module_fields = $this->module_fields->where(['mid' => $this->form_module->mid])->order('position', 'ASC')->get_all();
     }
 
+    public function set_send_to($addresses) {
+        $this->send_to = $addresses;
+    }
+
+    public function set_success_message($message) {
+        $this->success_message = $message;
+    }
+
     // Getters
     public function get_form_module() {
         return $this->form_module;
@@ -53,7 +63,7 @@ class submission_form extends ipsCore_helper
     private function form() {
         if ($this->get_form_module()) {
             $form = new ipsCore_form_builder($this->form_name);
-            $form->set_action('/contact/process/');
+            $form->set_action($this->form_action);
             $form->set_classes(['ajax_form']);
 
             $form->start_section('form_main');
@@ -74,7 +84,7 @@ class submission_form extends ipsCore_helper
         return $this->form()->render();
     }
 
-    public function process_form($success_message = false, $sendto = false) {
+    public function process_form($success_message = false, $send_to = false) {
         $errors = [];
 
         $form = $this->form();
@@ -100,9 +110,12 @@ class submission_form extends ipsCore_helper
                 if (!$success_message) {
                     $success_message = $this->success_message;
                 }
+                if (!$send_to) {
+                    $send_to = $this->send_to;
+                }
 
                 if ($this->send_to) {
-                    if (ipsCore::$mailer->send($this->send_to, 'New Contact Form Submission', $content)) {
+                    if (ipsCore::$mailer->send($send_to, 'New Contact Form Submission', $content)) {
                         $json_data = ['success' => $success_message];
                     } else {
                         $errors[] = 'Failed to send your submission, please try again or contact an administrator for assistance.';

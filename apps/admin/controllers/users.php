@@ -187,7 +187,7 @@ class users_controller extends admin_controller
         $form = new ipsCore_form_builder('remove_form');
         $form->set_action('/admin/users/remove_user_popup/' . $user_id);
         $form->set_classes(['ajax_form', 'remove']);
-        $form->add_submit('remove', '<i class="far fa-trash-alt"></i>Remove Config Field');
+        $form->add_submit('remove', '<i class="far fa-trash-alt"></i>Remove User');
 
         return $form->render();
 	}
