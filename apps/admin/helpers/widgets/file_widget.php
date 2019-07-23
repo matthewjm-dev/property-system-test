@@ -11,11 +11,12 @@ class file_widget extends dashboard_widget
         $this->load_model('admin_file', 'file');
 
         $files = $this->file->get_all();
-        $count_all = count($files);
+        $count_all = 0;
         $count_files = 0;
         $count_images = 0;
 
         if (!empty($files)) {
+            $count_all = count($files);
             foreach ($files as $file) {
                 if ($file->type == 'image') {
                     $count_images++;

@@ -12,12 +12,13 @@ class page_widget extends dashboard_widget
 
         $pages = $this->module_item->get_all();
 
-        $count_all = count($pages);
+        $count_all = 0;
         $count_live = 0;
         $count_unlive = 0;
         $count_locked = 0;
 
 		if (!empty($pages)) {
+            $count_all = count($pages);
 			foreach ($pages as $page) {
 				if ($page->live) {
 					$count_live++;

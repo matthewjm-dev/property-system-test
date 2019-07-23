@@ -12,12 +12,13 @@ class contact_widget extends dashboard_widget
 
         $contacts = $this->module_item->get_all();
 
-        $count_all = count($contacts);
+        $count_all = 0;
         $count_live = 0;
         $count_unlive = 0;
         $count_locked = 0;
 
 		if (!empty($contacts)) {
+            $count_all = count($contacts);
 			foreach ($contacts as $contact) {
 				if ($contact->live) {
 					$count_live++;
