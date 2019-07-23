@@ -6,19 +6,23 @@ Skeleton currently comes pre-packed with 2 apps:
 - admin, this is an administration sytem for site building
 - site, a front end site to be accessed by users
 
-To fully install skeleton project for development:
+To init a skeleton project for development:
 - Fork the skeleton respository to a new project
 - Pull down the new project repository to the desired location
 - Copy environment.ini.example to environment.ini and configure for the current system
+- Configure config.ini to include all apps
 - Configure package.json for the required packages, can be edited later
 - Run npm install to install all dev packages
 - Configure composer.json 
 - Run composer install
 - Configure Grunfile.js
+- Configure public/robots.txt
+- Configure .gitignore
 - Run grunt production to compile all assets for live
+- Commit all changes and push to project
 - DONE
 
-To fully install project for live:
+To install project for live:
 - pull the project repository to the desired location
 - copy environment.ini.example to environment.ini and configure for the current system
 - Run composer install
