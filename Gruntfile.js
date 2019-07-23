@@ -123,5 +123,5 @@ module.exports = function(grunt) {
 
 	// Tasks
     grunt.registerTask('default', ['sass', 'concat_css', 'concat']);
-	grunt.registerTask('production', ['copy', 'sass', 'concat_css', 'cssmin', 'concat', 'copy:app_images']);
+	grunt.registerTask('production', ['copy', 'sass', 'concat_css', 'cssmin', 'concat', 'uglify', 'copy:app_images']);
 };
