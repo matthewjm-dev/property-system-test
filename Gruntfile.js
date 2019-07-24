@@ -11,7 +11,7 @@ module.exports = function(grunt) {
                 },
 				files: {
 				    'public/css/src/site.css': 'apps/site/assets/sass/import.scss',
-				    'public/css/src/admin.css': 'apps/admin/assets/sass/import.scss',
+				    'public/css/src/admin.css': 'apps/AdminV1.00/assets/sass/import.scss',
 				}
             }
         },
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
             dev: {
                 files: {
                     'public/css/src/site-lib.css': 'apps/site/assets/lib/**/*.css',
-                    'public/css/src/admin-lib.css': 'apps/admin/assets/lib/**/*.css',
+                    'public/css/src/admin-lib.css': 'apps/AdminV1.00/assets/lib/**/*.css',
                 }
             }
         },
@@ -44,8 +44,8 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'public/js/src/admin-lib.js': 'apps/admin/assets/lib/**/*.js',
-                    'public/js/src/admin.js': 'apps/admin/assets/js/*.js',
+                    'public/js/src/admin-lib.js': 'apps/AdminV1.00/assets/lib/**/*.js',
+                    'public/js/src/admin.js': 'apps/AdminV1.00/assets/js/*.js',
                     'public/js/src/site-lib.js': 'apps/site/assets/lib/**/*.js',
                     'public/js/src/site.js': 'apps/site/assets/js/*.js',
                 }
@@ -89,7 +89,7 @@ module.exports = function(grunt) {
 			app_images: {
 				files: [{
 					expand: true,
-					cwd: 'apps/admin/assets/img/',
+					cwd: 'apps/AdminV1.00/assets/img/',
 					src: ['**/*'],
 					dest: 'public/img/admin/'
 				}]
