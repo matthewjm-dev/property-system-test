@@ -3,12 +3,17 @@
     {
       "type": "git",
       "url": "https://bitbucket.org/inphasesolutionsprojects/core-v1.00.git"
+    },
+	{
+      "type": "git",
+      "url": "https://bitbucket.org/inphasesolutionsprojects/admin-v1.00.git"
     }
   ],
   "require": {
-    "php": ">=5.4",
+    "php": ">=7.1",
     "composer/installers": "~1.0",
     "inphasesolutionsprojects/core-v1.00": "dev-master",
+    "inphasesolutionsprojects/admin-v1.00": "dev-master",
     "twbs/bootstrap": "4.2.1",
     "twig/twig": "1.37.1",
     "fortawesome/font-awesome": "5.7.1",
@@ -18,7 +23,8 @@
   },
   "extra": {
     "installer-paths": {
-      "core/{$name}/": ["inphasesolutionsprojects/core-v1.00"]
+      "core/{$name}/": ["inphasesolutionsprojects/core-v1.00"],
+      "apps/{$name}/": ["inphasesolutionsprojects/admin-v1.00"]
     }
   }
 }

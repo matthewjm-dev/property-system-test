@@ -1,1 +1,0 @@
-<div class="loader"><div class="leader-icon"></div></div>
