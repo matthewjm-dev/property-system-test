@@ -44,7 +44,7 @@ if (!$current_app_key) {
 }
 
 /* Get core version */
-$core_version = 'core/core_v' . $apps_configs[$current_app_key]['core']['version'] . '/';
+$core_version = 'core/core-v' . $apps_configs[$current_app_key]['core']['version'] . '/';
 $core_file = $path_base . $core_version . 'ips_core.php';
 
 /* Autoload */
