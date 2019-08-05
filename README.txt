@@ -3,19 +3,19 @@ In Phase Solutions skeleton v1.00
 The skeleton package is the base upon which apps and core versions are built. 
 
 Skeleton currently comes pre-packed with 2 apps:
-- admin, this is an administration sytem for site building
+- ipscms, this is an administration sytem for site building (seperate repo)
 - site, a front end site to be accessed by users
 
 To init a skeleton project for development:
 - Fork the skeleton respository to a new project
 - Pull down the new project repository to the desired location
 - Copy environment.ini.example to environment.ini and configure for the current system
-- Configure config.ini to include all apps
 - Configure package.json for the required packages, can be edited later
 - Run npm install to install all dev packages
-- Configure composer.json 
+- Create / configure config-*.ini files in /apps for apps
+- Configure composer.json
 - Run composer install
-- Configure Grunfile.js
+- Configure Grunfile.js for apps
 - Configure public/robots.txt
 - Configure .gitignore
 - Run grunt production to compile all assets for live
