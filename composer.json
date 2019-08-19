@@ -16,7 +16,6 @@
     "inphasesolutionsprojects/ipscms-v1.00": "dev-master",
     "twbs/bootstrap": "4.2.1",
     "twig/twig": "1.37.1",
-    "fortawesome/font-awesome": "5.7.1",
     "mailgun/mailgun-php": "2.8.1",
     "kriswallsmith/buzz": "1.0.1",
     "nyholm/psr7": "1.1.0"

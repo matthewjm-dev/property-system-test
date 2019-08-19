@@ -78,14 +78,14 @@ module.exports = function(grunt) {
                     dest: 'public/lib/ckeditor/'
                 }]
             },
-			fontawesome: {
-				files: [{
+            fontawesome: {
+                files: [{
                     expand: true,
-                    cwd: 'vendor/fortawesome/font-awesome/webfonts',
+                    cwd: 'node_modules/@fortawesome/fontawesome-free/webfonts',
                     src: '*.*',
                     dest: 'public/fonts'
                 }]
-			},
+            },
 			app_images: {
 				files: [{
 					expand: true,

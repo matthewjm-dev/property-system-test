@@ -4,7 +4,7 @@
 
 // Font Awesome
 $fa-font-path: '../../fonts';
-@import "../../../../vendor/fortawesome/font-awesome/scss/brands";
-@import "../../../../vendor/fortawesome/font-awesome/scss/regular";
-@import "../../../../vendor/fortawesome/font-awesome/scss/solid";
-@import "../../../../vendor/fortawesome/font-awesome/scss/fontawesome";
+@import "../../../../node_modules/@fortawesome/fontawesome-free/scss/brands";
+@import "../../../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "../../../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+@import "../../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
