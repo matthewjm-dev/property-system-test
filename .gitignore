@@ -2,4 +2,3 @@ environment.ini
 /node_modules
 /core/*
 !/core/startup.php
-/public/uploads
