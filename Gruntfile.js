@@ -11,7 +11,7 @@ module.exports = function(grunt) {
                 },
 				files: {
 				    'public/css/src/site.css': 'apps/site/assets/sass/import.scss',
-				    'public/css/src/admin.css': 'apps/AdminV1.00/assets/sass/import.scss',
+					'public/css/src/ipscms.css': 'apps/ipscms-v1.00/assets/sass/import.scss',
 				}
             }
         },
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
             dev: {
                 files: {
                     'public/css/src/site-lib.css': 'apps/site/assets/lib/**/*.css',
-                    'public/css/src/admin-lib.css': 'apps/AdminV1.00/assets/lib/**/*.css',
+					'public/css/src/ipscms-lib.css': 'apps/ipscms-v1.00/assets/lib/**/*.css',
                 }
             }
         },
@@ -44,8 +44,8 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'public/js/src/admin-lib.js': 'apps/AdminV1.00/assets/lib/**/*.js',
-                    'public/js/src/admin.js': 'apps/AdminV1.00/assets/js/*.js',
+					'public/js/src/ipscms-lib.js': 'apps/ipscms-v1.00/assets/lib/**/*.js',
+                    'public/js/src/ipscms.js': 'apps/ipscms-v1.00/assets/js/*.js',
                     'public/js/src/site-lib.js': 'apps/site/assets/lib/**/*.js',
                     'public/js/src/site.js': 'apps/site/assets/js/*.js',
                 }
@@ -78,20 +78,31 @@ module.exports = function(grunt) {
                     dest: 'public/lib/ckeditor/'
                 }]
             },
-            fontawesome: {
-                files: [{
-                    expand: true,
-                    cwd: 'node_modules/@fortawesome/fontawesome-free/webfonts',
-                    src: '*.*',
-                    dest: 'public/fonts'
-                }]
+            select2: {
+                files: {
+                    'public/lib/select2/select2.min.js': 'node_modules/select2/dist/js/select2.min.js',
+                    'public/lib/select2/select2.min.css': 'node_modules/select2/dist/css/select2.min.css'
+                }
             },
+			fontawesome: {
+				files: [{
+					expand: true,
+					cwd: 'node_modules/@fortawesome/fontawesome-free/webfonts',
+					src: '*.*',
+					dest: 'public/fonts'
+				}]
+			},
 			app_images: {
 				files: [{
 					expand: true,
-					cwd: 'apps/AdminV1.00/assets/img/',
+					cwd: 'apps/ipscms-v1.00/assets/img/',
 					src: ['**/*'],
-					dest: 'public/img/admin/'
+					dest: 'public/img/ipscms/'
+				},{
+					expand: true,
+					cwd: 'apps/site/assets/img/',
+					src: ['**/*'],
+					dest: 'public/img/site/'
 				}]
 			}
 		}
