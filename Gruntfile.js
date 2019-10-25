@@ -105,7 +105,27 @@ module.exports = function(grunt) {
 					dest: 'public/img/site/'
 				}]
 			}
-		}
+		},
+		watch: {
+            javascript: {
+                files: [
+                    'apps/*/assets/*/**/*.js'
+                ],
+                tasks: ['concat'],
+                options : {
+                    spawn: false
+                }
+            },
+            sass: {
+                files: [
+                    'apps/*/assets/*/**/*.scss'
+                ],
+                tasks: ['sass', 'concat_css'],
+                options : {
+                    spawn: false
+                }
+            },
+        }
 	});
 
 	// Get apps
