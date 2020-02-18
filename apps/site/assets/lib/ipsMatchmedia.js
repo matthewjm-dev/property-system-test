@@ -36,39 +36,87 @@ function refreshMediaQueries() {
     media_queries.xs = window.matchMedia('(max-width:544px)');
 }
 
-function isBreakpoint( size ) {
+function isBreakpoint(size) {
     return media_queries[size].matches;
 }
 
-function getBreakpoint( size ) {
+function getBreakpoint(size) {
     return media_sizes[size];
 }
 
 function isMobile() {
-   if ( isBreakpoint( 'xs' ) || isBreakpoint( 'sm' ) ) {
-       return true;
-   }
-   return false;
+    if (isBreakpoint('xs') || isBreakpoint('sm')) {
+        return true;
+    }
+    return false;
 }
 
 function isTablet() {
-    if ( isBreakpoint( 'md' ) ) {
+    if (isBreakpoint('md')) {
         return true;
     }
     return false;
 }
 
 function isLaptop() {
-    if ( isBreakpoint( 'lg' ) ) {
+    if (isBreakpoint('lg')) {
         return true;
     }
     return false;
 }
 
 function isDesktop() {
-    if ( isBreakpoint( 'xl' ) ) {
+    if (isBreakpoint('xl')) {
         return true;
     }
+    return false;
+}
+
+function isBreakpointUp(size) {
+    if (size == 'xs') {
+        return true;
+    } else if (size == 'sm') {
+        if (isBreakpoint('sm') || isBreakpoint('md') || isBreakpoint('lg') || isBreakpoint('xl')) {
+            return true;
+        }
+    } else if (size == 'md') {
+        if (isBreakpoint('md') || isBreakpoint('lg') || isBreakpoint('xl')) {
+            return true;
+        }
+    } else if (size == 'lg') {
+        if (isBreakpoint('lg') || isBreakpoint('xl')) {
+            return true;
+        }
+    } else if (size == 'xl') {
+        if (isBreakpoint('xl')) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function isBreakpointDown(size) {
+    if (size == 'xs') {
+        if (isBreakpoint('xs')) {
+            return true;
+        }
+    } else if (size == 'sm') {
+        if (isBreakpoint('xs') || isBreakpoint('sm')) {
+            return true;
+        }
+    } else if (size == 'md') {
+        if (isBreakpoint('xs') || isBreakpoint('sm') || isBreakpoint('md')) {
+            return true;
+        }
+    } else if (size == 'lg') {
+        if (isBreakpoint('xs') || isBreakpoint('sm') || isBreakpoint('md') || isBreakpoint('lg')) {
+            return true;
+        }
+    } else if (size == 'xl') {
+        return true;
+    }
+
     return false;
 }
 
