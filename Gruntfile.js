@@ -1,7 +1,7 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
-	grunt.initConfig({
+    grunt.initConfig({
         // CSS
         sass: {
             dev: {
@@ -9,18 +9,20 @@ module.exports = function(grunt) {
                     sourcemap: 'none',
                     //check: false
                 },
-				files: {
-				    'public/css/src/site.css': 'apps/site/assets/sass/import.scss',
-					'public/css/src/ipscms.css': 'apps/ipscms-v1.00/assets/sass/import.scss',
-				}
+                files: { // One day this will use the "apps" array
+                    'public/css/src/ipscms.css': 'apps/ipscms-v1.00/assets/sass/import.scss',
+                    'public/css/src/ipsinvoices.css': 'apps/ipsinvoices-v1.00/assets/sass/import.scss',
+                    'public/css/src/site.css': 'apps/site/assets/sass/import.scss',
+                }
             }
         },
         concat_css: {
             options: {},
             dev: {
-                files: {
+                files: { // One day this will use the "apps" array
+                    'public/css/src/ipscms-lib.css': 'apps/ipscms-v1.00/assets/lib/**/*.css',
+                    'public/css/src/ipsinvoices-lib.css': 'apps/ipsinvoices-v1.00/assets/lib/**/*.css',
                     'public/css/src/site-lib.css': 'apps/site/assets/lib/**/*.css',
-					'public/css/src/ipscms-lib.css': 'apps/ipscms-v1.00/assets/lib/**/*.css',
                 }
             }
         },
@@ -43,8 +45,9 @@ module.exports = function(grunt) {
                 separator: '\n\n'
             },
             dist: {
-                files: {
-					'public/js/src/ipscms-lib.js': 'apps/ipscms-v1.00/assets/lib/**/*.js',
+                files: { // One day this will use the "apps" array (+ core)
+                    'public/js/src/ipscore.js': 'core/core-v1.00/assets/js/*.js',
+                    'public/js/src/ipscms-lib.js': 'apps/ipscms-v1.00/assets/lib/**/*.js',
                     'public/js/src/ipscms.js': 'apps/ipscms-v1.00/assets/js/*.js',
                     'public/js/src/site-lib.js': 'apps/site/assets/lib/**/*.js',
                     'public/js/src/site.js': 'apps/site/assets/js/*.js',
@@ -62,16 +65,16 @@ module.exports = function(grunt) {
                 }]
             }
         },
-		copy: {
-        	jquery: {
-        		files: {
+        copy: {
+            jquery: {
+                files: {
                     'public/lib/jquery/jquery.min.js': 'node_modules/jquery/dist/jquery.min.js',
                     'public/lib/jquery-ui/jquery-ui.min.js': 'node_modules/jquery-ui-dist/jquery-ui.min.js',
                     'public/lib/jquery-ui/jquery-ui.min.css': 'node_modules/jquery-ui-dist/jquery-ui.min.css'
-				}
-			},
+                }
+            },
             ckeditor: {
-        	    files: [{
+                files: [{
                     expand: true,
                     cwd: 'node_modules/ckeditor/',
                     src: [ '**/*', '!**/samples/**', '!**/adapters/**', '!bower.json', '!CHANGES.md', '!composer.json', '!LICENSE.md', '!package.json', '!README.md', '!yarn.lock' ],
@@ -84,29 +87,36 @@ module.exports = function(grunt) {
                     'public/lib/select2/select2.min.css': 'node_modules/select2/dist/css/select2.min.css'
                 }
             },
-			fontawesome: {
-				files: [{
-					expand: true,
-					cwd: 'node_modules/@fortawesome/fontawesome-free/webfonts',
-					src: '*.*',
-					dest: 'public/fonts'
-				}]
-			},
-			app_images: {
-				files: [{
-					expand: true,
-					cwd: 'apps/ipscms-v1.00/assets/img/',
-					src: ['**/*'],
-					dest: 'public/img/ipscms/'
-				},{
-					expand: true,
-					cwd: 'apps/site/assets/img/',
-					src: ['**/*'],
-					dest: 'public/img/site/'
-				}]
-			}
-		},
-		watch: {
+            fontawesome: {
+                files: [{
+                    expand: true,
+                    cwd: 'node_modules/@fortawesome/fontawesome-free/webfonts',
+                    src: '*.*',
+                    dest: 'public/fonts'
+                }]
+            },
+            app_images: {
+                files: [{
+                    expand: true,
+                    cwd: 'apps/ipscms-v1.00/assets/img/',
+                    src: ['**/*'],
+                    dest: 'public/img/ipscms/'
+                },
+                    {
+                        expand: true,
+                        cwd: 'apps/ipsinvoices-v1.00/assets/img/',
+                        src: ['**/*'],
+                        dest: 'public/img/ipsinvoices/'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'apps/site/assets/img/',
+                        src: ['**/*'],
+                        dest: 'public/img/site/'
+                    }]
+            }
+        },
+        watch: {
             javascript: {
                 files: [
                     'apps/*/assets/*/**/*.js'
@@ -126,9 +136,9 @@ module.exports = function(grunt) {
                 }
             },
         }
-	});
+    });
 
-	// Get apps
+    // Get apps
     var app_templates = grunt.file.expand({
         filter: "isDirectory",
         cwd: "apps"
@@ -141,18 +151,18 @@ module.exports = function(grunt) {
     console.log( 'Found Apps:' );
     console.log( apps );
 
-	// These plugins provide necessary tasks
+    // These plugins provide necessary tasks
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-concat-css');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-contrib-uglify-es');
+    grunt.loadNpmTasks('grunt-contrib-uglify-es');
     grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     //grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-autoprefixer');
 
-	// Tasks
+    // Tasks
     grunt.registerTask('default', ['sass', 'concat_css', 'concat']);
-	grunt.registerTask('production', ['copy', 'sass', 'concat_css', 'cssmin', 'concat', 'uglify', 'copy:app_images']);
+    grunt.registerTask('production', ['copy', 'sass', 'concat_css', 'cssmin', 'concat', 'uglify', 'copy:app_images']);
 };

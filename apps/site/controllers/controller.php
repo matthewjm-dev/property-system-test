@@ -16,7 +16,7 @@ class site_controller extends ipsCore_controller
 
             $this->add_library(['jquery' => 'min.js', 'https://fonts.googleapis.com/css?family=Orbitron:400,700|Raleway:400,700&display=swap' => false]);
             $this->add_stylesheet(['site-lib', 'site']);
-            $this->add_script(['site-lib', 'site']);
+            $this->add_script(['site-lib', 'site', 'ipscore']);
         }
 
         parent::__construct($controller, $additional);
