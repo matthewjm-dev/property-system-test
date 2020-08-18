@@ -10,8 +10,6 @@ module.exports = function(grunt) {
                     //check: false
                 },
                 files: { // One day this will use the "apps" array
-                    'public/css/src/ipscms.css': 'apps/ipscms-v1.00/assets/sass/import.scss',
-                    'public/css/src/ipsinvoices.css': 'apps/ipsinvoices-v1.00/assets/sass/import.scss',
                     'public/css/src/site.css': 'apps/site/assets/sass/import.scss',
                 }
             }
@@ -20,8 +18,6 @@ module.exports = function(grunt) {
             options: {},
             dev: {
                 files: { // One day this will use the "apps" array
-                    'public/css/src/ipscms-lib.css': 'apps/ipscms-v1.00/assets/lib/**/*.css',
-                    'public/css/src/ipsinvoices-lib.css': 'apps/ipsinvoices-v1.00/assets/lib/**/*.css',
                     'public/css/src/site-lib.css': 'apps/site/assets/lib/**/*.css',
                 }
             }
@@ -47,8 +43,6 @@ module.exports = function(grunt) {
             dist: {
                 files: { // One day this will use the "apps" array (+ core)
                     'public/js/src/ipscore.js': 'core/core-v1.00/assets/js/*.js',
-                    'public/js/src/ipscms-lib.js': 'apps/ipscms-v1.00/assets/lib/**/*.js',
-                    'public/js/src/ipscms.js': 'apps/ipscms-v1.00/assets/js/*.js',
                     'public/js/src/site-lib.js': 'apps/site/assets/lib/**/*.js',
                     'public/js/src/site.js': 'apps/site/assets/js/*.js',
                 }
@@ -97,23 +91,11 @@ module.exports = function(grunt) {
             },
             app_images: {
                 files: [{
-                    expand: true,
-                    cwd: 'apps/ipscms-v1.00/assets/img/',
-                    src: ['**/*'],
-                    dest: 'public/img/ipscms/'
-                },
-                    {
-                        expand: true,
-                        cwd: 'apps/ipsinvoices-v1.00/assets/img/',
-                        src: ['**/*'],
-                        dest: 'public/img/ipsinvoices/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'apps/site/assets/img/',
-                        src: ['**/*'],
-                        dest: 'public/img/site/'
-                    }]
+					expand: true,
+					cwd: 'apps/site/assets/img/',
+					src: ['**/*'],
+					dest: 'public/img/site/'
+				}]
             }
         },
         watch: {
