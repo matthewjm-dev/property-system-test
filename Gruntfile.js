@@ -67,20 +67,6 @@ module.exports = function(grunt) {
                     'public/lib/jquery-ui/jquery-ui.min.css': 'node_modules/jquery-ui-dist/jquery-ui.min.css'
                 }
             },
-            ckeditor: {
-                files: [{
-                    expand: true,
-                    cwd: 'node_modules/ckeditor/',
-                    src: [ '**/*', '!**/samples/**', '!**/adapters/**', '!bower.json', '!CHANGES.md', '!composer.json', '!LICENSE.md', '!package.json', '!README.md', '!yarn.lock' ],
-                    dest: 'public/lib/ckeditor/'
-                }]
-            },
-            select2: {
-                files: {
-                    'public/lib/select2/select2.min.js': 'node_modules/select2/dist/js/select2.min.js',
-                    'public/lib/select2/select2.min.css': 'node_modules/select2/dist/css/select2.min.css'
-                }
-            },
             fontawesome: {
                 files: [{
                     expand: true,
