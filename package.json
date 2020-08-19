@@ -6,9 +6,7 @@
   "dependencies": {
     "jquery": "3.3.1",
     "jquery-ui-dist": "1.12.1",
-    "@fortawesome/fontawesome-free": "^5.10.1",
-    "ckeditor": "^4.11.2",
-    "select2": "^4.0.8"
+    "@fortawesome/fontawesome-free": "^5.10.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
