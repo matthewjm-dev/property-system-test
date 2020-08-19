@@ -1,0 +1,25 @@
+<div id="main">
+    <section>
+        <div class="container">
+            <h1>{{ title }}</h1>
+            <br />
+            <p>Town: {{ property.town }}</p>
+            <p>County: {{ property.county }}</p>
+            <p>Country: {{ property.country }}</p>
+            <br />
+            <p>Description:</p>
+            <p>{{ property.county }}</p>
+            <br />
+            <p>Property Type: {{ property.relationships.property_type.0.title }}</p>
+            <p>{{ property.relationships.property_type.0.description }}</p></p>
+            <br />
+            <p>Number of Bedrooms: {{ property.num_bedrooms }}</p>
+            <p>Number of Bathrooms: {{ property.num_bathrooms }}</p>
+            <p>Sale Type: {{ property.type }}</p>
+            <p>Price: {{ property.price }}</p>
+            <br />
+            <p>Latitude: {{ property.latitude }}</p>
+            <p>Longitude: {{ property.longitude }}</p>
+        </div>
+    </section>
+</div>

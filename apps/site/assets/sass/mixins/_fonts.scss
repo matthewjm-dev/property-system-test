@@ -1,0 +1,7 @@
+@mixin font-primary( $size:$font-primary-default-size, $weight:$font-primary-default-weight, $colour:$font-primary-default-colour, $spacing:$font-primary-default-spacing ) {
+	font-family: $font-primary;
+	font-size: $size;
+	font-weight: $weight;
+	letter-spacing: $spacing;
+	color: $colour;
+}

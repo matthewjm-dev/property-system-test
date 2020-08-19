@@ -1,0 +1,14 @@
+<div class="property">
+    <div class="row">
+        <div class="col-md-4">
+            <a href="/property/{{ property.slug }}">
+                <img src="{{ property.relationships.image.url }}" />
+            </a>
+        </div>
+        <div class="col-md-8">
+            <a href="/property/{{ property.slug }}">
+                <h2>{{ property.address }}</h2>
+            </a>
+        </div>
+    </div>
+</div>

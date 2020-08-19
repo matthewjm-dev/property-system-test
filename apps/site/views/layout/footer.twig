@@ -1,0 +1,17 @@
+		<footer>
+
+		</footer>
+		{% if libraries is defined %}
+			{% if libraries.scripts is defined %}
+				{% for library_script in libraries.scripts %}
+					<script src="{{ library_script }}"></script>
+				{% endfor %}
+			{% endif %}
+		{% endif %}
+		{% if scripts is defined %}
+			{% for script in scripts %}
+				<script src="{{ script }}"></script>
+			{% endfor %}
+		{% endif %}
+	</body>
+</html>

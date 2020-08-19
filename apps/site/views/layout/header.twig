@@ -1,0 +1,22 @@
+<header>
+	<div class="container">
+		<div class="row">
+			<div class="col-5">
+                <h1>{{ site_title }}</h1>
+			</div>
+			<div class="col-7">
+				<nav>
+					{% if header_links is defined and header_links is not empty %}
+						<ul>
+							{% for header_link in header_links %}
+								<li{% if header_link.current %} class="current"{% endif %}>
+									<a href="{{ header_link.href }}">{{ header_link.title }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>

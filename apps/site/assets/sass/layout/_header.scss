@@ -1,0 +1,35 @@
+$header-height: 60px;
+
+#header {
+	width: 100%;
+	height: $header-height;
+	background-color: $grey;
+
+	h1 {
+		color: $white;
+		line-height: $header-height;
+	}
+
+	ul {
+		float: right;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+
+		li {
+			height: $header-height;
+			display: inline-block;
+
+			a {
+				display: block;
+				@include font-primary(14px, 400, $white);
+				line-height: $header-height;
+				padding: 0 10px;
+			}
+
+			&.current a {
+				color: $blue;
+			}
+		}
+	}
+}
