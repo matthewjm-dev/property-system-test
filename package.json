@@ -4,9 +4,9 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "jquery": "3.3.1",
-    "jquery-ui-dist": "1.12.1",
-    "@fortawesome/fontawesome-free": "^5.10.1"
+    "@fortawesome/fontawesome-free": "^5.10.1",
+    "jquery": "^3.5.1",
+    "jquery-ui-dist": "1.12.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
