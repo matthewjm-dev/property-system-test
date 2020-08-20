@@ -10,14 +10,14 @@ class site_controller extends ipsCore_controller
     // Construct
     public function __construct($controller, $additional = false)
     {
-        if ( !$additional ) {
+        if (!$additional) {
             $this->load_model('file');
-			$this->load_model('property_type');
-			$this->load_model('property');
+            $this->load_model('property_type');
+            $this->load_model('property');
 
             $this->add_library(['jquery' => 'min.js']);
             $this->add_stylesheet(['site-lib', 'site']);
-            $this->add_script(['site-lib', 'site']);
+            $this->add_script(['site-lib', 'site', 'ipscore']);
         }
 
         parent::__construct($controller, $additional);
@@ -32,17 +32,17 @@ class site_controller extends ipsCore_controller
     public function get_header_data()
     {
         $this->add_data([
-            'site_title' => 'Property System',
-			'header_links' => [
-				[
-					'title' => 'Property List',
-					'href'  => '/'
-				],
-				[
-					'title' => 'Admin',
-					'href'  => '/admin'
-				]
-			]
+            'site_title'   => 'Property System',
+            'header_links' => [
+                [
+                    'title' => 'Property List',
+                    'href'  => '/'
+                ],
+                [
+                    'title' => 'Admin',
+                    'href'  => '/admin'
+                ]
+            ]
 
         ]);
     }
@@ -75,9 +75,9 @@ class site_controller extends ipsCore_controller
 
     public function error404($message = false, $title = false)
     {
-        $this->set_page_title('404 Error!');
+        $this->set_page_title(($title ?: '404 Error!'));
         $this->add_data([
-            'title' => ($title ?: '404 Page not found'),
+            'title'   => ($title ?: '404 Page not found'),
             'content' => ($message ?: 'The requested page could not be found.'),
         ]);
 
