@@ -19,7 +19,7 @@ class properties_helper extends ipsCore_helper
 		parent::__construct( $name );
 	}
 
-	public function fetch( $page = 1, $count = false )
+	public function fetch( $page = 20, $count = false )
 	{
 		$curl = curl_init();
 
