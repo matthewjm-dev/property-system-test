@@ -22,7 +22,6 @@ class property_type_model extends site_model
 			'created'          => [ 'type' => 'int', 'length' => 11 ],
 			'modified'         => [ 'type' => 'int', 'length' => 11 ],
 			'removed'          => [ 'type' => 'tinyint', 'length' => 1 ],
-			'slug'             => [ 'type' => 'varchar', 'length' => 255 ],
 			'type_id'          => [ 'type' => 'varchar', 'length' => 255 ],
 			'title'            => [ 'type' => 'varchar', 'length' => 255 ],
 			'description'      => [ 'type' => 'text' ],
