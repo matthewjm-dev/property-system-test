@@ -19,33 +19,45 @@ class properties_controller extends site_controller
 	// Methods
 	public function index( $slug = false, $page = false )
 	{
-		if ( $slug && $slug != 'property' ) {
+		if ( $slug != 'page' && !$page) {
 			$this->property( $slug );
-		} else {
+		} elseif (is_numeric($page) || $page === false) {
 			if ( !$page ) {
 				$page = 1;
 			}
 			$this->list( $page );
+		} else {
+			$this->error404();
 		}
 	}
 
-	public function list( $page )
+	public function list( $page = 1 )
 	{
 		$this->add_view_class( 'list' );
 
 		$properties_helper = new properties_helper( 'properties_helper' );
-		if ( $properties_helper->fetch( $page ) ) {
+		$count = 1;
+
+		if ( $properties_helper->fetch( $page, $count ) ) {
+
+			$total_pages = (int)$properties_helper->total / $count;
+
+			$first_page = ( $page == 1 ? false : 1 );
+			$last_page = ( $page == $total_pages ? false : $total_pages );
+			$next_page = ( $page == $total_pages ? false : $page + 1 );
+			$previous_page = ( $page == 1 ? false : $page - 1 );
 
 			$this->add_data( [
 				'title'           => 'Property System',
 				'content'         => 'Content',
 				'properties_list' => $this->get_properties_list( $properties_helper->properties ),
-				'pagination'      => $this->get_properties_pagination( [
-					'current_page' => $page,
-					'',
-					'',
-					'',
-					'',
+				'pagination'      => ipsCore::get_part( 'properties/parts/pagination', [
+					'current_page'  => $page,
+					'first_page'    => $first_page,
+					'last_page'     => $last_page,
+					'next_page'     => $next_page,
+					'previous_page' => $previous_page,
+					'total_pages'   => $total_pages,
 				] ),
 			] );
 
@@ -66,6 +78,7 @@ class properties_controller extends site_controller
 			$this->add_data( [
 				'title'    => 'Viewing Property - ' . $property->get_prop( 'address' ),
 				'property' => $property,
+				'image'    => $property->get_relationship( 'image' )->get_prop( 'path' ),
 			] );
 
 			$this->get_layout();
@@ -82,7 +95,9 @@ class properties_controller extends site_controller
 		if ( !empty( $properties ) ) {
 			foreach ( $properties as $property ) {
 				$properties_items[] = ipsCore::get_part( 'properties/parts/item', [
-					'property' => $property
+					'address'   => $property->get_prop( 'address' ),
+					'slug'      => $property->get_prop( 'slug' ),
+					'thumbnail' => $property->get_relationship( 'thumbnail' )->get_prop( 'path' ),
 				] );
 			}
 		}
@@ -90,10 +105,5 @@ class properties_controller extends site_controller
 		return ipsCore::get_part( 'properties/parts/list', [
 			'properties' => $properties_items
 		] );
-	}
-
-	public function get_properties_pagination( $args )
-	{
-
 	}
 }
