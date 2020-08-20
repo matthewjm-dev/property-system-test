@@ -12,8 +12,7 @@ jQuery(function ($) {
                 methods.add_loader($('.property-list'));
             },
             complete_override: function () {
-                history.pushState(null, null, 'page/');
-                console.log('pagination success', $(this));
+                history.pushState(null, null, $(this).attr('href'));
                 init_pagination();
             }
         });
