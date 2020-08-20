@@ -8,5 +8,7 @@ $this->add_route_group('admin', false, function() {
 	$this->add_route( '.', 'admin', 'index' );
 });
 
-$this->add_route( 'property', 'properties', 'property', ipsCore::$uri_parts );
-$this->add_route( '*', 'properties', 'index', ipsCore::$uri_parts );
+$this->add_route( 'property', 'properties', 'property' );
+$this->add_route( 'page', 'properties', 'list' );
+$this->add_route( 'paginate', 'properties', 'paginate' );
+$this->add_route( '*', 'properties', 'list', ipsCore::$uri_parts );
