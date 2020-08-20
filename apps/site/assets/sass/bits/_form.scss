@@ -2,14 +2,18 @@ form {
 	fieldset {
 		padding: 0;
 		border: 0;
+		padding-bottom: 10px;
 		margin-bottom: 10px;
 		position: relative;
+		border-bottom: 1px solid $black;
 
 		label {
 
 		}
 
-		input {
+		input, textarea {
+			width: 60%;
+			float: right;
 			padding: 5px;
 		}
 
@@ -24,6 +28,26 @@ form {
 			position: absolute;
 			bottom: 0;
 			color: red;
+		}
+
+		&.radio {
+			label:first-child {
+				display: block;
+			}
+			label.radiofield {
+				float: right;
+				margin-left: 40px;
+
+				input {
+					width: 15px;
+					height: 15px;
+					margin: 0 0 0 5px;
+				}
+			}
+		}
+
+		&:last-child {
+			border: 0;
 		}
 	}
 }
