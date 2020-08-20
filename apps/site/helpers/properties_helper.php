@@ -12,19 +12,20 @@ class properties_helper extends ipsCore_helper
 	public $last_page_url;
 	public $next_page_url;
 	public $total;
+	public $count = 1;
 
 	public function __construct( $name )
 	{
 		parent::__construct( $name );
 	}
 
-	public function fetch( $page = 1, $count = 30 )
+	public function fetch( $page = 1, $count = false )
 	{
 		$curl = curl_init();
 
 		$params = http_build_query( [
 			'page[number]' => $page,
-			'page[size]'   => $count,
+			'page[size]'   => ($count ?: $this->count),
 			'api_key'      => ipsCore::$app->config[ 'properties-api' ][ 'api_key' ],
 		] );
 
