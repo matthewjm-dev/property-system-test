@@ -1,25 +1,16 @@
-#main.page.blog {
-	.blog-post-preview {
-		padding: 10px 0;
-		border-bottom: 1px solid $grey;
+body.admin {
 
-		.blog-post-preview-inner {
-			.blog-post-preview-image {
-				background-size: cover;
-				background-position: center;
-			}
+	&.list {
+		table {
+			width: 100%;
 
-			.blog-post-preview-content {
-				padding-left: 20px;
-
-				h2 {
-					margin: 0 0 15px;
-				}
-
-				p {
-					margin: 0;
-				}
+			td {
+				border-bottom: 1px solid $black;
 			}
 		}
+	}
+
+	&.property {
+
 	}
 }

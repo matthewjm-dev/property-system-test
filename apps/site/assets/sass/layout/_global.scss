@@ -41,3 +41,7 @@ h6 {
 .inner {
 	@include ips-fill_parent();
 }
+
+#main {
+	padding: 40px 0;
+}
