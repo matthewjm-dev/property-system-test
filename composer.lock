@@ -191,7 +191,7 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/inphasesolutionsprojects/core-v1.00.git",
-                "reference": "482cbfaaee3f8976d60cbd222f8b7acb73db6d29"
+                "reference": "5bf11e173313e6a25cb42a18a65b55b281655d5d"
             },
             "require": {
                 "composer/installers": "^1.0",
@@ -209,7 +209,7 @@
                 }
             ],
             "description": "IPS Core v1.00",
-            "time": "2020-08-20T00:45:40+00:00"
+            "time": "2020-08-20T17:24:20+00:00"
         },
         {
             "name": "kriswallsmith/buzz",
