@@ -12,14 +12,14 @@ class properties_helper extends ipsCore_helper
 	public $last_page_url;
 	public $next_page_url;
 	public $total;
-	public $count = 1;
+	public $count = 20;
 
 	public function __construct( $name )
 	{
 		parent::__construct( $name );
 	}
 
-	public function fetch( $page = 20, $count = false )
+	public function fetch( $page = 1, $count = false )
 	{
 		$curl = curl_init();
 
